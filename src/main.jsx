@@ -7,6 +7,8 @@ import Main from "./Compment/Main/Main.jsx";
 import Home from "./Compment/Home/Home.jsx";
 import Login from "./Compment/Login/Login.jsx";
 import Blog from "./Compment/Blog/Blog.jsx";
+import Recipe from "./Compment/Recipe/Recipe.jsx";
+import Chef from "./Compment/Chef/Chef.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,16 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog></Blog>,
+      },
+    ],
+  },
+  {
+    path: "chef",
+    element: <Chef></Chef>,
+    children: [
+      {
+        path: ":id",
+        element: <Recipe></Recipe>,
       },
     ],
   },
