@@ -8,7 +8,7 @@ const Home = () => {
         <div className="card lg:card-side w-9/12 h-96 mx-auto ">
           <img
             className="p-2 rounded-lg"
-            src="https://i.postimg.cc/yxZYtjwR/young-man-coocking-noodles.webp"
+            src="https://i.postimg.cc/HWqj4nxV/banner-chef.png"
             alt="Album"
           />
           <div className="card-body ">

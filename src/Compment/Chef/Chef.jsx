@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Chef = () => {
   const [chefs, setChefs] = useState([]);
@@ -14,21 +15,21 @@ const Chef = () => {
       {chefs.map((chef) => (
         <div key={chef.id}>
           <div className="card w-82 bg-white shadow-xl  ">
-            <figure>
+            <figure className="shadow-md rounded-lg">
               <img
-                src="https://i.postimg.cc/yxZYtjwR/young-man-coocking-noodles.webp"
-                alt="Shoes"
+                src={chef.chef_picture}
+                className="h-52 w-full p-3  "
+                alt=""
               />
             </figure>
-            <div className="card-body">
-              <h2 className="card-title">
-                <div className="badge badge-secondary">NEW</div>
-              </h2>
-              <p>If a dog chews shoes whose shoes does he choose?</p>
-              <h1>{chef.chef_name}</h1>
+            <div className="card-body text-slate-500">
+              <h1 className="font-bold">Name: {chef.chef_name}</h1>
+              <p>Experience: {chef.years_of_experience} Year</p>
+              <p>Recipe: {chef.num_recipes}</p>
+              <p className="text-info font-medium">Like: {chef.likes}</p>
               <div className="card-actions justify-end">
-                <div className="badge badge-outline">Fashion</div>
-                <div className="badge badge-outline">Products</div>
+                <Link className="badge badge-outline">View Recipes</Link>
+                <Link className="badge badge-outline">Chef's Details</Link>
               </div>
             </div>
           </div>
