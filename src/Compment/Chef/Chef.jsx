@@ -30,7 +30,9 @@ const Chef = () => {
                 <p>Recipe: {chef.num_recipes}</p>
                 <p className="text-info font-medium">Like: {chef.likes}</p>
                 <div className="card-actions justify-end">
-                  <Link className="badge badge-outline">View Recipes</Link>
+                  <Link to="/recipe" className="badge badge-outline">
+                    View Recipes
+                  </Link>
                   <Link className="badge badge-outline">Chef's Details</Link>
                 </div>
               </div>
