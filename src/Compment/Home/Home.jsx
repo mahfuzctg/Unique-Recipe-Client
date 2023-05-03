@@ -1,5 +1,6 @@
 import React from "react";
 import Chef from "../Chef/Chef";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -19,7 +20,20 @@ const Home = () => {
               Authentic and Unique Recipes from the Heart of dhaka bangladesh on
               Our Website
             </p>
-            <button className="btn btn-primary">Order Now</button>
+
+            <Link
+              className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400  text-center font-bold text-2xl p-2 rounded-lg"
+              to="/login"
+            >
+              Login Here
+            </Link>
+
+            <Link
+              className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400  text-center font-bold text-2xl p-2 rounded-lg"
+              to="/resister"
+            >
+              Resister Here
+            </Link>
           </div>
         </div>
       </div>

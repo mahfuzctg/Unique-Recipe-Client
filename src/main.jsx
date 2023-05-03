@@ -9,6 +9,7 @@ import Login from "./Compment/Login/Login.jsx";
 import Blog from "./Compment/Blog/Blog.jsx";
 import Recipe from "./Compment/Recipe/Recipe.jsx";
 import Chef from "./Compment/Chef/Chef.jsx";
+import Resister from "./Compment/Rerister/Resister.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/resister",
+        element: <Resister></Resister>,
       },
       {
         path: "/blog",
