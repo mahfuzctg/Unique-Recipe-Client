@@ -1,21 +1,22 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Form, Link } from "react-router-dom";
 import app from "../../Firebase/Firebase.config";
+import { authContext } from "../Providers/AuthProviders";
 
 const auth = getAuth(app);
 const Login = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
+  const { logIn } = useContext(authContext);
   const handleLogin = (event) => {
     event.preventDefault();
     setSuccess("");
     const email = event.target.email.value;
     const password = event.target.password.value;
     console.log(email, password);
-
-    signInWithEmailAndPassword(auth, email, password)
+    event.target.reset();
+    logIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
         setSuccess("successfully logged");

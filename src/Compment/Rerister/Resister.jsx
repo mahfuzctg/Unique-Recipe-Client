@@ -1,31 +1,51 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Form, Link } from "react-router-dom";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+} from "firebase/auth";
 import app from "../../Firebase/Firebase.config";
+import { authContext } from "../Providers/AuthProviders";
 
 const auth = getAuth(app);
 
 const Resister = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
+  const { createUser } = useContext(authContext);
   const handleResister = (event) => {
     event.preventDefault();
     setSuccess("");
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log(email, password);
-    createUserWithEmailAndPassword(auth, email, password)
+    const name = event.target.name.value;
+    console.log(name, email, password);
+    setError("");
+    createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
-        setError("");
+
         event.target.reset();
         setSuccess("Successfully Registered!");
+        updateUserData(result.user, name);
       })
       .catch((error) => {
         console.log(error.message);
         setError(error.message);
+      });
+  };
+
+  const updateUserData = (user, name) => {
+    updateProfile(user, {
+      displayName: name,
+    })
+      .then(() => {
+        console.log("user name updated");
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
   return (
@@ -37,7 +57,7 @@ const Resister = () => {
             <span className="label-text">Type Your Name</span>
           </label>
           <input
-            type="text"
+            type=""
             name="name"
             placeholder="Type Your Name"
             required

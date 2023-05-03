@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { authContext } from "../Providers/AuthProviders";
 
 const Header = () => {
+  const { user, logOut } = useContext(authContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
-    <div className="navbar bg-gradient-to-b from-blue-400 via-purple-500 to-pink-500 text-white rounded-lg my-3">
+    <div className="navbar font-bold bg-gradient-to-b from-blue-400 via-purple-500 to-pink-500 text-white rounded-lg my-3">
       <nav className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -34,12 +44,10 @@ const Header = () => {
                 Blog
               </Link>
             </li>
-            <li>
-              <Link to="/user">User</Link>
-            </li>
+            <li>{user && <span>Welcome</span>}</li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <p className="font-bold text-xl p-3">Unique Recipe</p>
       </nav>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -50,11 +58,27 @@ const Header = () => {
             <Link to="/blog">Blog</Link>
           </li>
           <li>
-            <Link to="/user">User</Link>
+            {user && (
+              <span>
+                {user.email}
+                <button
+                  className="bg-gradient-to-b from-pink-400 via-purple-100 to-blue-500 text-black  p-1 rounded-lg"
+                  onClick={handleLogOut}
+                >
+                  LogOut
+                </button>
+              </span>
+            )}
           </li>
         </ul>
       </div>
-      <div className="navbar-end"></div>
+      <div className="navbar-end">
+        <div className="avatar">
+          <div className="w-12 mx-3 rounded-full ring ring-green-500 ring-offset-base-500 ring-offset-2">
+            <img src="https://i.postimg.cc/WzGFCqbp/chef-2.jpg" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

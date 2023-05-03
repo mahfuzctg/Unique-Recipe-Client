@@ -4,9 +4,6 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 const Recipe = () => {
-  const { id } = useParams();
-  const recipes = useLoaderData();
-
   return (
     <div>
       <Header></Header>

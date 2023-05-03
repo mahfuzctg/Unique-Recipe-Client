@@ -10,6 +10,8 @@ import Blog from "./Compment/Blog/Blog.jsx";
 import Recipe from "./Compment/Recipe/Recipe.jsx";
 import Chef from "./Compment/Chef/Chef.jsx";
 import Resister from "./Compment/Rerister/Resister.jsx";
+import AuthProviders from "./Compment/Providers/AuthProviders.jsx";
+import PrivateRoute from "./Compment/Routes/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -41,13 +43,20 @@ const router = createBrowserRouter([
   },
   {
     path: "/recipe",
-    element: <Recipe></Recipe>,
+    element: (
+      <PrivateRoute>
+        <Recipe></Recipe>
+      </PrivateRoute>
+    ),
+
     loader: ({ params }) => fetch(`http://localhost:5000/recipes/${params.id}`),
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProviders>
+      <RouterProvider router={router} />
+    </AuthProviders>
   </React.StrictMode>
 );

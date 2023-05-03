@@ -38,7 +38,9 @@ const Home = () => {
         </div>
       </div>
 
-      <Chef></Chef>
+      <>
+        <Chef></Chef>
+      </>
     </div>
   );
 };
