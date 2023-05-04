@@ -1,10 +1,21 @@
 import React from "react";
-
+import Pdf from "react-to-pdf";
+const ref = React.createRef();
 const Blog = () => {
   return (
     <div>
-      <div className=" glass  rounded-lg shadow-xl">
-        <div className="card-body">
+      <div className=" glass rounded-lg shadow-xl">
+        <Pdf targetRef={ref} filename="code-example.pdf">
+          {({ toPdf }) => (
+            <button
+              className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              onClick={toPdf}
+            >
+              Download PDF
+            </button>
+          )}
+        </Pdf>
+        <div ref={ref} className="card-body">
           <h2 className="card-title">
             <span>First Question: </span> Tell us the differences between
             uncontrolled and controlled components.
