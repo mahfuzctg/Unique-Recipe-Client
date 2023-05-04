@@ -6,17 +6,15 @@ const Footer = () => {
       <footer className="footer p-10 bg-gradient-to-b from-blue-400 via-purple-500 to-pink-500 text-white my-5 rounded-lg">
         <div>
           <span className="footer-title">Services</span>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
+          <a className="link link-hover">Unique Recipe</a>
+          <a className="link link-hover">Awesome Chef</a>
           <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
         </div>
         <div>
           <span className="footer-title">Company</span>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
           <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
         </div>
         <div>
           <span className="footer-title">Legal</span>

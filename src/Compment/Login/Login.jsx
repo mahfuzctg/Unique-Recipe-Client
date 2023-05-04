@@ -1,14 +1,52 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 import React, { useContext, useState } from "react";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import app from "../../Firebase/Firebase.config";
 import { authContext } from "../Providers/AuthProviders";
 
 const auth = getAuth(app);
+
 const Login = () => {
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        setUser(loggedInUser);
+      })
+      .catch((error) => {
+        console.log("error", error.message);
+      });
+  };
+  const handleGithubSignIn = () => {
+    signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        setUser(loggedInUser);
+      })
+      .catch((error) => {
+        console.log("error", error.message);
+      });
+  };
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { logIn } = useContext(authContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [show, setShow] = useState(false);
+
+  const from = location.state?.from?.pathname || "/";
   const handleLogin = (event) => {
     event.preventDefault();
     setSuccess("");
@@ -21,6 +59,7 @@ const Login = () => {
         const loggedUser = result.user;
         setSuccess("successfully logged");
         setError("");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
@@ -45,14 +84,19 @@ const Login = () => {
           <label className="label">
             <span className="label-text">Enter Your Password</span>
           </label>
+
           <input
-            type="password"
+            type={show ? "text" : "password"}
             name="password"
             id="password"
             placeholder="Enter Your Password"
             className="input input-bordered w-full bg-white "
           />
-
+          <p onClick={() => setShow(!show)}>
+            <small className="p-2 font-bold">
+              {show ? <span>Hide</span> : <span>Show</span>}
+            </small>
+          </p>
           <br />
 
           <input
@@ -60,6 +104,21 @@ const Login = () => {
             type="submit"
             value="Login"
           />
+
+          <div className="mx-auto ">
+            <button
+              className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400  my-2 rounded-lg font-bold mr-2 "
+              onClick={handleGoogleSignIn}
+            >
+              <FaGoogle className="h-6 w-8 rounded-lg text-green-700" />
+            </button>
+            <button
+              className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400 my-2 rounded-lg font-bold  mx-auto"
+              onClick={handleGithubSignIn}
+            >
+              <FaGithub className="h-6 w-8  rounded-lg text-white" />
+            </button>
+          </div>
         </div>
       </Form>
       <p className="text-white font-medium">{error}</p>

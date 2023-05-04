@@ -7,11 +7,15 @@ import Main from "./Compment/Main/Main.jsx";
 import Home from "./Compment/Home/Home.jsx";
 import Login from "./Compment/Login/Login.jsx";
 import Blog from "./Compment/Blog/Blog.jsx";
-import Recipe from "./Compment/Recipe/Recipe.jsx";
+
 import Chef from "./Compment/Chef/Chef.jsx";
 import Resister from "./Compment/Rerister/Resister.jsx";
 import AuthProviders from "./Compment/Providers/AuthProviders.jsx";
 import PrivateRoute from "./Compment/Routes/PrivateRoute.jsx";
+import About from "./Compment/About/About.jsx";
+import Review from "./Compment/Review/Review.jsx";
+import Details from "./Compment/Details/Details.jsx";
+import Card from "./Compment/Card/Card.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +36,20 @@ const router = createBrowserRouter([
         element: <Resister></Resister>,
       },
       {
+        path: "/aboute",
+        element: <About></About>,
+      },
+      {
+        path: "/review",
+        element: <Review></Review>,
+      },
+      {
         path: "/blog",
-        element: <Blog></Blog>,
+        element: (
+          <PrivateRoute>
+            <Blog></Blog>
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -42,14 +58,13 @@ const router = createBrowserRouter([
     element: <Chef></Chef>,
   },
   {
-    path: "/recipe",
-    element: (
-      <PrivateRoute>
-        <Recipe></Recipe>
-      </PrivateRoute>
-    ),
-
-    loader: ({ params }) => fetch(`http://localhost:5000/recipes/${params.id}`),
+    path: "card",
+    element: <Card></Card>,
+  },
+  {
+    path: "details/:id",
+    element: <Details></Details>,
+    loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`),
   },
 ]);
 

@@ -61,6 +61,7 @@ const Header = () => {
             {user && (
               <span>
                 {user.email}
+
                 <button
                   className="bg-gradient-to-b from-pink-400 via-purple-100 to-blue-500 text-black  p-1 rounded-lg"
                   onClick={handleLogOut}
@@ -75,7 +76,7 @@ const Header = () => {
       <div className="navbar-end">
         <div className="avatar">
           <div className="w-12 mx-3 rounded-full ring ring-green-500 ring-offset-base-500 ring-offset-2">
-            <img src="https://i.postimg.cc/WzGFCqbp/chef-2.jpg" />
+            <img src={user?.photoURL} alt="" />
           </div>
         </div>
       </div>
