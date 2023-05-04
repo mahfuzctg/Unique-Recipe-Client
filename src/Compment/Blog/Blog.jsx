@@ -3,7 +3,7 @@ import React from "react";
 const Blog = () => {
   return (
     <div>
-      <div className="bg-white rounded-lg shadow-xl">
+      <div className=" glass  rounded-lg shadow-xl">
         <div className="card-body">
           <h2 className="card-title">
             <span>First Question: </span> Tell us the differences between
