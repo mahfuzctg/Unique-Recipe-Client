@@ -87,6 +87,14 @@ const Resister = () => {
             className="input input-bordered w-full bg-white "
           />
           <br />
+          <input
+            className="input input-bordered w-full bg-white "
+            type="url"
+            name=""
+            id=""
+            placeholder="Press URL"
+          />
+          <br />
 
           <input
             className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400  text-center font-bold text-2xl p-2 rounded-lg"
