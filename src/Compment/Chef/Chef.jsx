@@ -23,7 +23,7 @@ const Chef = () => {
       <h1 className="text-center py-2 mt-5 text-2xl font-bold">
         OUR SPECIAL CHEF
       </h1>
-      <div className="grid grid-rows-2 grid-cols-3 gap-4">
+      <div className=" grid grid-cols-1 lg:grid-cols-3 grid-rows-2  gap-4">
         {cards.map((card) => (
           <Card key={card.id} card={card}></Card>
         ))}

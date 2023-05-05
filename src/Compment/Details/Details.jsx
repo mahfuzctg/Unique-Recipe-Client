@@ -21,8 +21,8 @@ const Details = () => {
     <>
       <Header></Header>
       <div>
-        <div className="card bg-gradient-to-b from-blue-700 via-purple-700 to-pink-700 w-7/12 h-full mx-auto my-5 lg:card-side text-white shadow-xl">
-          <figure>
+        <div className="card bg-gradient-to-b from-blue-700 via-purple-700 to-pink-700 lg:w-7/12 h-full lg:mx-auto my-5 lg:card-side text-white shadow-xl">
+          <figure className="w-full ">
             <img src={image} className="w-full h-full" alt="Album" />
           </figure>
           <div className="card-body">
@@ -44,7 +44,7 @@ const Details = () => {
         </div>
       </div>
 
-      <div className="grid container mx-auto grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 container mx-auto gap-4">
         {recipe.map((recipe) => (
           <Recipes key={recipe.id} recipe={recipe}></Recipes>
         ))}

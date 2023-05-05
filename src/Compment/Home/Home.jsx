@@ -7,7 +7,7 @@ import Review from "../Review/Review";
 const Home = () => {
   return (
     <div className="container">
-      <div className=" bg-gradient-to-b from-blue-400 via-purple-500 to-pink-500 rounded-lg">
+      <div className=" glass rounded-lg shadow-2xl">
         <div className="card lg:card-side w-9/12 h-auto align-middle ">
           <img
             className="p-2 rounded-lg"
@@ -24,14 +24,14 @@ const Home = () => {
             </p>
 
             <Link
-              className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400  text-center font-bold text-2xl p-2 rounded-lg"
+              className="glass shadow-2xl  text-center font-bold text-2xl p-2 rounded-lg text-white"
               to="/login"
             >
               Login Here
             </Link>
 
             <Link
-              className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400  text-center font-bold text-2xl p-2 rounded-lg"
+              className="glass shadow-2xl  text-center font-bold text-2xl p-2 rounded-lg text-white"
               to="/resister"
             >
               Resister Here

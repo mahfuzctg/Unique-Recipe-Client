@@ -17,7 +17,7 @@ const Recipes = ({ recipe }) => {
     setBtn(true);
   };
   return (
-    <div className="card glass  gap-2 bg-gradient-to-b from-blue-400 via-purple-600 to-pink-500 text-white">
+    <div className="card gap-2 glass shadow-2xl text-white">
       <figure>
         <img className="w-full " src={recipeItemsImg} alt="car!" />
       </figure>
@@ -32,7 +32,7 @@ const Recipes = ({ recipe }) => {
           <span className="font-bold text-xl text-black">cooking_method: </span>
           {cooking_method}
         </p>
-        <p>Rating: {rating.number}</p>
+        <p>Rating: {rating.number} </p>
         <div className="card-actions justify-center ">
           <div className="text-black font-medium flex gap-2 ">
             <button onClick={handleBnt} disabled={btn} className="flex btn ">

@@ -8,6 +8,12 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: black;
-  background: linear-gradient(to bottom, #d8fafa, #aa98fb, #aaaa81, #adfacd);
+  color: white;
+  background: linear-gradient(
+    to bottom,
+    rgb(43, 11, 54),
+    #2b022b,
+    #290629,
+    #014720
+  );
 }
