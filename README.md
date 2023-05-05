@@ -1,6 +1,6 @@
 ## Live Link :
 
-Hosted by Netlify -> [Unique recipe](https://dashing-dasik-c4ca37.netlify.app/)
+Hosted by Netlify -> [Unique recipe](https://luxury-manatee-ccf108.netlify.app/)
 
 ##Assignment_10 unique recipe
 listed here what i did in this project.
