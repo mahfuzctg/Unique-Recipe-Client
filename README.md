@@ -1,6 +1,12 @@
-#Live Link : https://papaya-stroopwafel-2fbe2b.netlify.app/
+## Live Link :
+
+Hosted by Netlify -> [Unique recipe](https://dashing-dasik-c4ca37.netlify.app/)
+
+##Assignment_10 unique recipe
+listed here what i did in this project.
 -created nav and header
--home page
--six section and details
+-added a home page with some text and picture
+-six section with details
 -added 2 extra section
 -added footer
+-makes responsive for mobile and large device

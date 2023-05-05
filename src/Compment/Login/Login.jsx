@@ -52,7 +52,8 @@ const Login = () => {
     setSuccess("");
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log(email, password);
+    const url = event.target.url.value;
+    console.log(email, password, url);
     event.target.reset();
     logIn(email, password)
       .then((result) => {
@@ -79,7 +80,7 @@ const Login = () => {
             name="email"
             id="email"
             placeholder="Enter Your Email"
-            className="input input-bordered w-full bg-white "
+            className="input input-bordered w-full bg-white text-black"
           />
           <label className="label">
             <span className="label-text">Enter Your Password</span>
@@ -90,7 +91,7 @@ const Login = () => {
             name="password"
             id="password"
             placeholder="Enter Your Password"
-            className="input input-bordered w-full bg-white "
+            className="input input-bordered w-full bg-white text-black"
           />
           <p onClick={() => setShow(!show)}>
             <small className="p-2 font-bold">
@@ -98,7 +99,14 @@ const Login = () => {
             </small>
           </p>
           <br />
-
+          <input
+            className="input input-bordered w-full bg-white text-black "
+            type="url"
+            name="url"
+            id="url"
+            placeholder="Press URL"
+          />
+          <br />
           <input
             className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400  text-center font-bold text-2xl p-2 rounded-lg"
             type="submit"

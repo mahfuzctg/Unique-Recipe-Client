@@ -14,13 +14,15 @@ const Resister = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { createUser } = useContext(authContext);
+  const [show, setShow] = useState(false);
   const handleResister = (event) => {
     event.preventDefault();
     setSuccess("");
     const email = event.target.email.value;
     const password = event.target.password.value;
     const name = event.target.name.value;
-    console.log(name, email, password);
+    const url = event.target.url.value;
+    console.log(name, email, password, url);
     setError("");
     createUser(email, password)
       .then((result) => {
@@ -61,11 +63,11 @@ const Resister = () => {
             name="name"
             placeholder="Type Your Name"
             required
-            className="input input-bordered w-full bg-white "
+            className="input input-bordered w-full bg-white text-black"
           />
 
           <label className="label">
-            <span className="label-text">Type Your Email</span>
+            <span className="label-text ">Type Your Email</span>
           </label>
           <input
             type="email"
@@ -73,25 +75,30 @@ const Resister = () => {
             id="email"
             placeholder="Type Your Email"
             required
-            className="input input-bordered w-full bg-white "
+            className="input input-bordered w-full bg-white text-black"
           />
           <label className="label">
             <span className="label-text">Type Your Password</span>
           </label>
           <input
-            type="password"
+            type={show ? "text" : "password"}
             name="password"
             id="password"
             placeholder="Type Your Password"
             required
-            className="input input-bordered w-full bg-white "
+            className="input input-bordered w-full bg-white text-black "
           />
+          <p onClick={() => setShow(!show)}>
+            <small className="p-2 font-bold">
+              {show ? <span>Hide</span> : <span>Show</span>}
+            </small>
+          </p>
           <br />
           <input
-            className="input input-bordered w-full bg-white "
+            className="input input-bordered w-full bg-white text-black "
             type="url"
-            name=""
-            id=""
+            name="url"
+            id="url"
             placeholder="Press URL"
           />
           <br />

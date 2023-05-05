@@ -7,7 +7,7 @@ import Main from "./Compment/Main/Main.jsx";
 import Home from "./Compment/Home/Home.jsx";
 import Login from "./Compment/Login/Login.jsx";
 import Blog from "./Compment/Blog/Blog.jsx";
-
+import Error from "./Compment/Error/Error.jsx";
 import Chef from "./Compment/Chef/Chef.jsx";
 import Resister from "./Compment/Rerister/Resister.jsx";
 import AuthProviders from "./Compment/Providers/AuthProviders.jsx";
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/home",
