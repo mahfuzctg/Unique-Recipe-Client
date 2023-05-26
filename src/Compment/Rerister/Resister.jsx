@@ -1,8 +1,12 @@
 import React, { useContext, useState } from "react";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, useLocation, useNavigate } from "react-router-dom";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
+  signInWithPopup,
   updateProfile,
 } from "firebase/auth";
 import app from "../../Firebase/Firebase.config";
@@ -15,6 +19,38 @@ const Resister = () => {
   const [success, setSuccess] = useState("");
   const { createUser } = useContext(authContext);
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  // Providers
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        setUser(loggedInUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log("error", error.message);
+      });
+  };
+  const handleGithubSignIn = () => {
+    signInWithPopup(auth, githubProvider)
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        setUser(loggedInUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log("error", error.message);
+      });
+  };
   const handleResister = (event) => {
     event.preventDefault();
     setSuccess("");
@@ -32,6 +68,7 @@ const Resister = () => {
         event.target.reset();
         setSuccess("Successfully Registered!");
         updateUserData(result.user, name);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
@@ -108,6 +145,21 @@ const Resister = () => {
             type="submit"
             value="Register"
           />
+
+          <div className="mx-auto ">
+            <button
+              className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400  my-2 rounded-lg font-bold mr-2 "
+              onClick={handleGoogleSignIn}
+            >
+              <FaGoogle className="h-6 w-8 rounded-lg text-green-700" />
+            </button>
+            <button
+              className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400 my-2 rounded-lg font-bold  mx-auto"
+              onClick={handleGithubSignIn}
+            >
+              <FaGithub className="h-6 w-8  rounded-lg text-white" />
+            </button>
+          </div>
         </div>
       </Form>
       <p className="text-white font-medium">{error}</p>

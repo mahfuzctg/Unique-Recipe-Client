@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer container  grid grid:cols-1 grid:cols-3 glass text-white mx-auto my-5 p-5 rounded-lg">
+    <>
+      <footer className="footer grid grid:cols-1 lg:grid:cols-3 glass text-white my-5 py-2 rounded-lg">
         <div className="mx-auto">
           <span className="footer-title">Services</span>
           <a className="link link-hover">Unique Recipe</a>
@@ -23,7 +23,7 @@ const Footer = () => {
           <a className="link link-hover">Cookie policy</a>
         </div>
       </footer>
-    </div>
+    </>
   );
 };
 

@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     errorElement: <Error></Error>,
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <Home></Home>,
       },
       {
@@ -64,14 +64,17 @@ const router = createBrowserRouter([
         <Details></Details>
       </PrivateRoute>
     ),
-    loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`),
+    loader: ({ params }) =>
+      fetch(
+        `https://a-10-unique-recipe-server-mahfuzctg.vercel.app/details/${params.id}`
+      ),
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <div className="w-full">
     <AuthProviders>
       <RouterProvider router={router} />
     </AuthProviders>
-  </React.StrictMode>
+  </div>
 );

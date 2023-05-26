@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouteError } from "react-router-dom";
+import { Link, useRouteError } from "react-router-dom";
 const Error = () => {
   const error = useRouteError();
   return (
@@ -9,6 +9,10 @@ const Error = () => {
       <p>
         <i>{error.statusText || error.message}</i>
       </p>
+
+      <Link to="/" className="font-bold no-underline text-5xl">
+        Go Back
+      </Link>
     </div>
   );
 };

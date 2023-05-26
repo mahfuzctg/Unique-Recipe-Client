@@ -3,7 +3,7 @@ import React from "react";
 const Review = () => {
   return (
     <div className="container w-9/12 mx-auto p-4 m-10 bg-gradient-to-b from-blue-400 via-purple-600 to-pink-500 rounded-lg">
-      <h1 className="text-center font-bold text-2xl p-2 ">CUSTOMER REVIEW</h1>
+      <h1 className="text-center font-bold text-2xl p-2 ">Popular Recipes</h1>
       <div className="carousel w-full h-72 rounded-lg">
         <div id="item1" className="carousel-item w-full h-auto">
           <img

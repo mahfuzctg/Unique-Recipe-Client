@@ -14,6 +14,15 @@ import { authContext } from "../Providers/AuthProviders";
 const auth = getAuth(app);
 
 const Login = () => {
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const { logIn } = useContext(authContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [show, setShow] = useState(false);
+
+  const from = location.state?.from?.pathname || "/";
+
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
   const handleGoogleSignIn = () => {
@@ -22,6 +31,7 @@ const Login = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         setUser(loggedInUser);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log("error", error.message);
@@ -33,20 +43,13 @@ const Login = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         setUser(loggedInUser);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log("error", error.message);
       });
   };
 
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-  const { logIn } = useContext(authContext);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [show, setShow] = useState(false);
-
-  const from = location.state?.from?.pathname || "/";
   const handleLogin = (event) => {
     event.preventDefault();
     setSuccess("");

@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";

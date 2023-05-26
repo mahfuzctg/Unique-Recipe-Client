@@ -9,12 +9,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Main = () => {
   return (
-    <div className="container mx-auto">
+    <>
       <Header></Header>
       <ToastContainer></ToastContainer>
       <Outlet></Outlet>
       <Footer></Footer>
-    </div>
+    </>
   );
 };
 

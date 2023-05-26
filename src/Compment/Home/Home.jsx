@@ -6,11 +6,11 @@ import Review from "../Review/Review";
 
 const Home = () => {
   return (
-    <div className="container">
-      <div className=" glass rounded-lg shadow-2xl">
-        <div className="card lg:card-side w-9/12 h-auto align-middle ">
+    <>
+      <div className="rounded-lg">
+        <div className="card lg:card-side lg:w-11/12 h-auto align-middle ">
           <img
-            className="p-2 rounded-lg"
+            className="p-2 rounded-lg w-full"
             src="https://i.postimg.cc/HWqj4nxV/banner-chef.png"
             alt="Album"
           />
@@ -24,14 +24,14 @@ const Home = () => {
             </p>
 
             <Link
-              className="glass shadow-2xl  text-center font-bold text-2xl p-2 rounded-lg text-white"
+              className="glass shadow-2xl no-underline text-center font-bold text-2xl p-2 rounded-lg text-white"
               to="/login"
             >
               Login Here
             </Link>
 
             <Link
-              className="glass shadow-2xl  text-center font-bold text-2xl p-2 rounded-lg text-white"
+              className="glass shadow-2xl no-underline  text-center font-bold text-2xl p-2 rounded-lg text-white"
               to="/resister"
             >
               Resister Here
@@ -48,7 +48,7 @@ const Home = () => {
       <>
         <Review></Review>
       </>
-    </div>
+    </>
   );
 };
 

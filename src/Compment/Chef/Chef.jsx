@@ -8,7 +8,8 @@ const Chef = () => {
   useEffect(() => {
     const loadAllData = async () => {
       try {
-        const jsonData = "http://localhost:5000/details";
+        const jsonData =
+          "https://a-10-unique-recipe-server-mahfuzctg.vercel.app/details";
         const res = await fetch(jsonData);
         const data = await res.json();
         setCards(data);
