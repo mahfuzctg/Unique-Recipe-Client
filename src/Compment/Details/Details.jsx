@@ -20,8 +20,8 @@ const Details = () => {
     <>
       <Header></Header>
       <div>
-        <div className="card bg-gradient-to-b from-blue-700 via-purple-700 to-pink-700 lg:w-7/12 h-full lg:mx-auto my-5 lg:card-side text-white shadow-xl">
-          <figure className="w-full ">
+        <div className="card h-full  my-5 lg:card-side text-white shadow-xl">
+          <figure className="lg:w-10/12">
             <img src={image} className="w-full h-full" alt="Album" />
           </figure>
           <div className="card-body">

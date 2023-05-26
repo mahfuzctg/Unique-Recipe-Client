@@ -8,7 +8,7 @@ const Card = ({ card }) => {
     card;
   console.log(card);
   return (
-    <div className="card  grid glass">
+    <div className="card glass">
       <LazyLoadImage
         src={image}
         effect="blur"

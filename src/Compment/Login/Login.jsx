@@ -10,10 +10,12 @@ import React, { useContext, useState } from "react";
 import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import app from "../../Firebase/Firebase.config";
 import { authContext } from "../Providers/AuthProviders";
-
+import { toast } from "react-toastify";
+import dynamicTitle from "../../DynamicHook/DynamicTitle";
 const auth = getAuth(app);
 
 const Login = () => {
+  dynamicTitle(`Login`);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { logIn } = useContext(authContext);
@@ -30,11 +32,13 @@ const Login = () => {
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        setUser(loggedInUser);
+        setError("");
+        toast.success("Successfully Logged!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log("error", error.message);
+        setSuccess("");
+        toast.error(error.message);
       });
   };
   const handleGithubSignIn = () => {
@@ -42,11 +46,14 @@ const Login = () => {
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        setUser(loggedInUser);
+        setError("");
+        toast.success("Successfully Logged!");
+
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log("error", error.message);
+        setSuccess("");
+        toast.error(error.message);
       });
   };
 
@@ -61,12 +68,14 @@ const Login = () => {
     logIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        setSuccess("successfully logged");
         setError("");
+        toast.success("Successfully Logged!");
+
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        setError(error.message);
+        setSuccess("");
+        toast.error(error.message);
       });
   };
 

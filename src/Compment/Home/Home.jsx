@@ -3,8 +3,10 @@ import Chef from "../Chef/Chef";
 import { Link } from "react-router-dom";
 import About from "../About/About";
 import Review from "../Review/Review";
+import dynamicTitle from "../../DynamicHook/DynamicTitle";
 
 const Home = () => {
+  dynamicTitle(`Home`);
   return (
     <>
       <div className="rounded-lg">

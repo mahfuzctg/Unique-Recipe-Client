@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <footer className="footer grid grid:cols-1 lg:grid:cols-3 glass text-white my-5 py-2 rounded-lg">
+      <footer className="footer grid grid:cols-1 lg:grid:cols-3 glass text-white my-10  py-2 rounded-lg">
         <div className="mx-auto">
           <span className="footer-title">Services</span>
           <a className="link link-hover">Unique Recipe</a>

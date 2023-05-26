@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../Providers/AuthProviders";
+import dynamicTitle from "../../DynamicHook/DynamicTitle";
 
 const Header = () => {
+  dynamicTitle(`Header`);
   const { user, logOut } = useContext(authContext);
 
   const handleLogOut = () => {

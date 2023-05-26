@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { toast } from "react-toastify";
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
@@ -11,10 +12,12 @@ import {
 } from "firebase/auth";
 import app from "../../Firebase/Firebase.config";
 import { authContext } from "../Providers/AuthProviders";
+import dynamicTitle from "../../DynamicHook/DynamicTitle";
 
 const auth = getAuth(app);
 
 const Resister = () => {
+  dynamicTitle(`Register`);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const { createUser } = useContext(authContext);
@@ -32,11 +35,13 @@ const Resister = () => {
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        setUser(loggedInUser);
+        setError("");
+        toast.success("Successfully Registered!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log("error", error.message);
+        setSuccess("");
+        toast.error(error.message);
       });
   };
   const handleGithubSignIn = () => {
@@ -44,11 +49,13 @@ const Resister = () => {
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        setUser(loggedInUser);
+        setError("");
+        toast.success("Successfully Registered!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log("error", error.message);
+        setSuccess("");
+        toast.error(error.message);
       });
   };
   const handleResister = (event) => {
@@ -59,20 +66,19 @@ const Resister = () => {
     const name = event.target.name.value;
     const url = event.target.url.value;
     console.log(name, email, password, url);
-    setError("");
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
-
+        setError("");
+        toast.success("Successfully Registered!");
         event.target.reset();
-        setSuccess("Successfully Registered!");
         updateUserData(result.user, name);
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error.message);
-        setError(error.message);
+        setSuccess("");
+        toast.error(error.message);
       });
   };
 
