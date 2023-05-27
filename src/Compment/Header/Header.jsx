@@ -68,6 +68,13 @@ const Header = () => {
         </div>
 
         <div className="navbar-end mr-8">
+          {user && (
+            <img
+              className="rounded-full w-12 bg-green-500  p-1"
+              src={user?.photoURL}
+              alt=""
+            />
+          )}
           {user ? (
             <div className=" mx-2 flex items-center gap-3  ">
               <button
@@ -76,12 +83,6 @@ const Header = () => {
               >
                 Log Out
               </button>
-
-              <img
-                className="rounded-full w-12 bg-green-500  p-1"
-                src={user?.photoURL}
-                alt=""
-              />
             </div>
           ) : (
             <>

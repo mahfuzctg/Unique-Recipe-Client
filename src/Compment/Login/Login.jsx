@@ -24,6 +24,7 @@ const Login = () => {
   const [show, setShow] = useState(false);
 
   const from = location.state?.from?.pathname || "/";
+  console.log(from);
 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
@@ -33,12 +34,12 @@ const Login = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         setError("");
-        toast.success("Successfully Logged!");
+        setSuccess("Successfully Logged!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
         setSuccess("");
-        toast.error(error.message);
+        setError(error.message);
       });
   };
   const handleGithubSignIn = () => {
@@ -47,13 +48,13 @@ const Login = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         setError("");
-        toast.success("Successfully Logged!");
+        setSuccess("Successfully Logged!");
 
         navigate(from, { replace: true });
       })
       .catch((error) => {
         setSuccess("");
-        toast.error(error.message);
+        setError(error.message);
       });
   };
 
@@ -69,13 +70,13 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         setError("");
-        toast.success("Successfully Logged!");
+        setError("Successfully Logged!");
 
         navigate(from, { replace: true });
       })
       .catch((error) => {
         setSuccess("");
-        toast.error(error.message);
+        setError(error.message);
       });
   };
 
@@ -124,23 +125,22 @@ const Login = () => {
             type="submit"
             value="Login"
           />
-
-          <div className="mx-auto ">
-            <button
-              className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400  my-2 rounded-lg font-bold mr-2 "
-              onClick={handleGoogleSignIn}
-            >
-              <FaGoogle className="h-6 w-8 rounded-lg text-green-700" />
-            </button>
-            <button
-              className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400 my-2 rounded-lg font-bold  mx-auto"
-              onClick={handleGithubSignIn}
-            >
-              <FaGithub className="h-6 w-8  rounded-lg text-white" />
-            </button>
-          </div>
         </div>
       </Form>
+      <div className="mx-auto ">
+        <button
+          className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400  my-2 rounded-lg font-bold mr-2 "
+          onClick={handleGoogleSignIn}
+        >
+          <FaGoogle className="h-6 w-8 rounded-lg text-green-700" />
+        </button>
+        <button
+          className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400 my-2 rounded-lg font-bold  mx-auto"
+          onClick={handleGithubSignIn}
+        >
+          <FaGithub className="h-6 w-8  rounded-lg text-white" />
+        </button>
+      </div>
       <p className="text-white font-medium">{error}</p>
       <p className="text-white font-medium">{success}</p>
       <p className="font-bold m-2">

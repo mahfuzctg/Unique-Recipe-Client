@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { FaRegHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Recipes = ({ recipe }) => {
-  const [btn, setBtn] = useState([]);
+  const [btn, setBtn] = useState(false);
   const {
     id,
     recipeName,
@@ -14,15 +15,23 @@ const Recipes = ({ recipe }) => {
   } = recipe;
 
   const handleBtn = () => {
-    toast.success("Favorite added"); // Show success toast message
-    setBtn(true); // Disable the button
+    setBtn(
+      Swal.fire({
+        title: "Success!",
+        text: "Favorite added",
+        icon: "success",
+        confirmButtonText: "Thank you",
+      })
+    );
+
+    // setBtn(toast("added"));
   };
 
   return (
     <div className="card gap-2 glass shadow-2xl text-white">
-      <figure>
-        <img className="w-full " src={recipeItemsImg} alt="car!" />
-      </figure>
+      <>
+        <img className="w-full  rounded-lg" src={recipeItemsImg} alt="car!" />
+      </>
       <div className="card-body">
         <p className="card-title">{recipeName}</p>
         <hr />

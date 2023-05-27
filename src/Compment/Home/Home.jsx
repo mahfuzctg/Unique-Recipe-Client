@@ -12,7 +12,7 @@ const Home = () => {
       <div className="rounded-lg">
         <div className="card lg:card-side lg:w-11/12 h-auto align-middle ">
           <img
-            className="p-2 rounded-lg w-full"
+            className="p-2 rounded-lg w-full sm:h-11/12"
             src="https://i.postimg.cc/HWqj4nxV/banner-chef.png"
             alt="Album"
           />

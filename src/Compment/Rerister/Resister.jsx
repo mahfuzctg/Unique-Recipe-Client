@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { toast } from "react-toastify";
+
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
@@ -36,12 +36,12 @@ const Resister = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         setError("");
-        toast.success("Successfully Registered!");
+        setSuccess("Successfully Registered!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
         setSuccess("");
-        toast.error(error.message);
+        setError(error.message);
       });
   };
   const handleGithubSignIn = () => {
@@ -50,12 +50,12 @@ const Resister = () => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
         setError("");
-        toast.success("Successfully Registered!");
+        setSuccess("Successfully Registered!");
         navigate(from, { replace: true });
       })
       .catch((error) => {
         setSuccess("");
-        toast.error(error.message);
+        setError(error.message);
       });
   };
   const handleResister = (event) => {
@@ -65,20 +65,21 @@ const Resister = () => {
     const password = event.target.password.value;
     const name = event.target.name.value;
     const url = event.target.url.value;
+    event.target.reset();
     console.log(name, email, password, url);
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         console.log(user);
         setError("");
-        toast.success("Successfully Registered!");
-        event.target.reset();
-        updateUserData(result.user, name);
+        setSuccess("Successfully Registered!");
+
         navigate(from, { replace: true });
+        updateUserData(result.user, name);
       })
       .catch((error) => {
         setSuccess("");
-        toast.error(error.message);
+        setError(error.message);
       });
   };
 
@@ -151,23 +152,24 @@ const Resister = () => {
             type="submit"
             value="Register"
           />
-
-          <div className="mx-auto ">
-            <button
-              className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400  my-2 rounded-lg font-bold mr-2 "
-              onClick={handleGoogleSignIn}
-            >
-              <FaGoogle className="h-6 w-8 rounded-lg text-green-700" />
-            </button>
-            <button
-              className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400 my-2 rounded-lg font-bold  mx-auto"
-              onClick={handleGithubSignIn}
-            >
-              <FaGithub className="h-6 w-8  rounded-lg text-white" />
-            </button>
-          </div>
         </div>
       </Form>
+      <div>
+        <div className="mx-auto ">
+          <button
+            className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400  my-2 rounded-lg font-bold mr-2 "
+            onClick={handleGoogleSignIn}
+          >
+            <FaGoogle className="h-6 w-8 rounded-lg text-green-700" />
+          </button>
+          <button
+            className="bg-gradient-to-b from-blue-600 via-purple-300 to-pink-400 my-2 rounded-lg font-bold  mx-auto"
+            onClick={handleGithubSignIn}
+          >
+            <FaGithub className="h-6 w-8  rounded-lg text-white" />
+          </button>
+        </div>
+      </div>
       <p className="text-white font-medium">{error}</p>
       <p className="text-white font-medium">{success}</p>
 
